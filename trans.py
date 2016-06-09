@@ -6,6 +6,7 @@ sys.setdefaultencoding('utf-8')
 
 import requests
 from termcolor import colored
+import re
 
 class Trans:
 
@@ -62,7 +63,14 @@ class Trans:
 			'q': query_value
 		}
 		return params
-	
+		
+	def ischinese(self, query_value):
+		if re.match(r'[a-z]|[A-Z]]', query_value) is None:
+			return True
+		else:
+			return False
+
+
 	def output(self, query_value):
 		data = self.dotrans(query_value)
 		if data is not None:
@@ -71,7 +79,10 @@ class Trans:
 			for value in data['translation']:
 				print colored('\t %s', 'yellow') % value
 			print colored('基本词典:', 'green')
-			print colored('\t uk: %s  us：%s', 'blue') % (data['basic']['uk-phonetic'], data['basic']['us-phonetic'])
+			if self.ischinese(query_value):
+				print colored('\t pinyin：%s', 'blue') % data['basic']['phonetic']	
+			else:
+				print colored('\t uk: %s  us：%s', 'blue') % (data['basic']['uk-phonetic'], data['basic']['us-phonetic'])
 			for value in data['basic']['explains']:
 				print colored('\t %s','yellow') % value
 
