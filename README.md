@@ -37,9 +37,10 @@ Just run it in terminal like this :
 `trans words`
 
 Of course, You can also translate Chinese:
+> 当然，你也可以用它来翻译中文
 
 `trans 我想吃水果`
 
 And also, You can translate a long words like this:
-
+> 而且，你还可以翻译一整行的英文（注意要加上引号(双引号或者单引号)）
 `trans 'Why people learn computer science?'`
