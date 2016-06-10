@@ -31,9 +31,15 @@ Then run the install.sh
 
 ## How to use it
 ## 如何使用
-Just run it in terminal like this:
+Just run it in terminal like this :
 > 安装完成之后，可以直接在终端运行，如翻译 words
 
 `trans words`
 
+Of course, You can also translate Chinese:
 
+`trans 我想吃水果`
+
+And also, You can translate a long words like this:
+
+`trans 'Why people learn computer science?'`

@@ -74,28 +74,35 @@ class Trans:
 	def output(self, query_value):
 		data = self.dotrans(query_value)
 		if data is not None:
+
 			self.checkstatus(data['errorCode'])
+
 			print colored('有道翻译：', 'green')
 			for value in data['translation']:
 				print colored('\t %s', 'yellow') % value
+
 			print colored('基本词典:', 'green')
 			if 'basic' in data:
 				if self.ischinese(query_value):
-					print colored('\t pinyin：%s', 'blue') % data['basic']['phonetic']	
+					if 'phonetic' in data['basic']:
+						print colored('\t pinyin：%s', 'blue') % data['basic']['phonetic']	
 				else:
 					if 'us-phonetic' in data['basic']:
-						print colored('\t uk: %s  us：%s', 'blue') % (data['basic']['uk-phonetic'], data['basic']['us-phonetic'])
+						print colored('\t uk: %s  us：%s', 'blue') %\
+						 (data['basic']['uk-phonetic'], data['basic']['us-phonetic'])
 				for value in data['basic']['explains']:
 					print colored('\t %s','yellow') % value
 			else:
-				print colored('None(没有合适的解释)', 'red')
+				print colored('\tNone(没有合适的解释)', 'red')
+
 		else:
 			print '没有找到释义'
 
 
 
 q = None
-if sys.argv[1] is not None:
+
+if len(sys.argv) > 1:
 	q = sys.argv[1]
 else:
 	print colored('请输入一个参数', 'red')
