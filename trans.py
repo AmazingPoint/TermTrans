@@ -65,7 +65,7 @@ class Trans:
 		return params
 		
 	def ischinese(self, query_value):
-		if re.match(r'[a-z]|[A-Z]]', query_value) is None:
+		if re.match(r'[a-z]|[A-Z]', query_value) is None:
 			return True
 		else:
 			return False
@@ -79,12 +79,18 @@ class Trans:
 			for value in data['translation']:
 				print colored('\t %s', 'yellow') % value
 			print colored('基本词典:', 'green')
-			if self.ischinese(query_value):
-				print colored('\t pinyin：%s', 'blue') % data['basic']['phonetic']	
+			if 'basic' in data:
+				if self.ischinese(query_value):
+					print colored('\t pinyin：%s', 'blue') % data['basic']['phonetic']	
+				else:
+					if 'us-phonetic' in data['basic']:
+						print colored('\t uk: %s  us：%s', 'blue') % (data['basic']['uk-phonetic'], data['basic']['us-phonetic'])
+				for value in data['basic']['explains']:
+					print colored('\t %s','yellow') % value
 			else:
-				print colored('\t uk: %s  us：%s', 'blue') % (data['basic']['uk-phonetic'], data['basic']['us-phonetic'])
-			for value in data['basic']['explains']:
-				print colored('\t %s','yellow') % value
+				print colored('None(没有合适的解释)', 'red')
+		else:
+			print '没有找到释义'
 
 
 
