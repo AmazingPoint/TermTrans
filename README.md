@@ -31,6 +31,9 @@ Then run the install.sh
 
 ## How to use it
 ## 如何使用
+
+#### Translation
+#### 翻译功能
 Just run it in terminal like this :
 > 安装完成之后，可以直接在终端运行，如翻译 words
 
@@ -44,3 +47,16 @@ Of course, You can also translate Chinese:
 And also, You can translate a long words like this:
 > 而且，你还可以翻译一整行的英文（注意要加上引号(双引号或者单引号)）
 `trans 'Why people learn computer science?'`
+
+
+#### Record
+#### 记录功能
+By default, trans will record the word witch has been chechked. you can use command like this to show words:
+> trans会默认记录下你查询过的词条，你可以使用如下命令来查看：
+
+`trans -l`
+
+At the last, Every tool show have a help command like this:
+> 最后，每一种工具都会有类似这样一个帮助命令：
+
+`trans -h`

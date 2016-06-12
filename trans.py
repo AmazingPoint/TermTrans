@@ -143,6 +143,10 @@ if len(sys.argv) > 1:
 			cur.close()
 			conn.commit()
 			conn.close()
+		if sys.argv[1] == '-h':
+			print 'you can use -l to list words you searched.'
+			print 'you can use -h to show this help message.'
+			print 'you can use trans word to trans'
 	else:
 		q = sys.argv[1]
 		t = Trans()
